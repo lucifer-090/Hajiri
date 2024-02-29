@@ -4,7 +4,58 @@
 
 from tkinter import*
 from tkinter import messagebox
+import pymysql
+def clear():
+    Entry1.delete(0,END)
+    Entry2.delete(0,END)
 
+def login():
+    Entry1.get()
+    Entry2.get()
+    if(Entry1.get()=="" and Entry2.get()==""):
+        messagebox.showinfo("","Blank Not Allowed ")
+    elif var1.get()==1 and var2.get()==0:
+        try:
+            con=pymysql.connect(host='localhost',user='root',password='Lamjung@2056')
+            my_cursor=con.cursor()
+        except:
+            messagebox.showerror('Error','Connection is not established try again')
+            return
+        query='use stddata'
+        my_cursor.execute(query)
+        query='select * from studentsdata where username=%s and password=%s'
+        my_cursor.execute(query,(Entry1.get(),Entry2.get()))
+        row=my_cursor.fetchone()
+        if row==None:
+            messagebox.showerror('Error','Invalid username or password')
+            clear()
+        else:
+            messagebox.showinfo('Welcome','Login Sucessfully As Student')
+            s.destroy()
+            import studentdash
+        
+
+    elif var2.get()==1 and var1.get()==0:
+        try:
+            con1=pymysql.connect(host='localhost',user='root',password='Lamjung@2056')
+            my_cursor1=con1.cursor()
+        except:
+            messagebox.showerror('Error','Connection is not established try again')
+            return
+        query='use tdata'
+        my_cursor1.execute(query)
+        query='select * from teachersdata where username=%s and password=%s'
+        my_cursor1.execute(query,(Entry1.get(),Entry2.get()))
+        row1=my_cursor1.fetchone()
+        if row1==None:
+            messagebox.showerror('Error','Invalid username or password')
+            clear()
+        else:
+            messagebox.showinfo('Welcome','Login Sucessful As Teacher')
+            s.destroy()
+            import teacherdash
+    else:
+        ()
 s=Tk()
 s.title('HAJIRI LOGIN')
 s.config(bg="#5c2e8a")
@@ -24,36 +75,32 @@ chk=IntVar()
 check=Checkbutton(variable=chk,command=visible,bg='#966FD6')
 check.place(x=1260,y=520)
 
-def login():
-    username=Entry1.get()
-    password=Entry2.get()
-    if(username=="" and password==""):
-        messagebox.showinfo("","Blank Not Allowed ")
-    elif(username=="lucifer" and password==""):
-        messagebox.showinfo("","You must enter Password")
-    elif(username=="" and password=="7871"):
-        messagebox.showinfo("","You must enter Username")
-    elif(username=="lucifer" and password=="7871" and var1.get()==1):
-        messagebox.showinfo("","login Success As Student")
-        Entry1.delete(0,END)
-        Entry2.delete(0,END)
-        s.destroy()
-        import studentdash
-    elif(username=="lucifer" and password=="7871" and var2.get()==1):
-        messagebox.showinfo("","Login Success As Teacher")
-        Entry1.delete(0,END)
-        Entry2.delete(0,END)
-        s.destroy()
-        import teacherdash
-    elif(username=="lucifer" and password=="7871" and var1.get()==0 and var2.get()==0):
-        messagebox.showinfo("","One Option Must Be Selected")
-        Entry1.delete(0,END)
-        Entry2.delete(0,END)
+
+    # elif(username=="lucifer" and password==""):
+    #     messagebox.showinfo("","You must enter Password")
+    # elif(username=="" and password=="7871"):
+    #     messagebox.showinfo("","You must enter Username")
+    # elif(username=="lucifer" and password=="7871" and var1.get()==1):
+    #     #messagebox.showinfo("","login Success As Student")
+    #     Entry1.delete(0,END)
+    #     Entry2.delete(0,END)
+    #     s.destroy()
+    #     import studentdash
+    # elif(username=="lucifer" and password=="7871" and var2.get()==1):
+    #     messagebox.showinfo("","Login Success As Teacher")
+    #     Entry1.delete(0,END)
+    #     Entry2.delete(0,END)
+    #     s.destroy()
+    #     import teacherdash
+    # elif(username=="lucifer" and password=="7871" and var1.get()==0 and var2.get()==0):
+    #     messagebox.showinfo("","One Option Must Be Selected")
+    #     Entry1.delete(0,END)
+    #     Entry2.delete(0,END)
          
-    else:
-        messagebox.showinfo("","Incorrect Username and Password")
-        Entry1.delete(0,END)
-        Entry2.delete(0,END)
+    # else:
+    #     messagebox.showinfo("","Incorrect Username and Password")
+    #     Entry1.delete(0,END)
+    #     Entry2.delete(0,END)
 
 global entry1
 global entry2
