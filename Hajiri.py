@@ -56,6 +56,8 @@ def login():
             import teacherdash
     else:
         ()
+
+
 s=Tk()
 s.title('HAJIRI LOGIN')
 s.config(bg="#5c2e8a")
@@ -71,36 +73,11 @@ def visible():
     else:
         Entry2.config(show="*")
 
+#Checkbutton
 chk=IntVar()
 check=Checkbutton(variable=chk,command=visible,bg='#966FD6')
 check.place(x=1260,y=520)
 
-
-    # elif(username=="lucifer" and password==""):
-    #     messagebox.showinfo("","You must enter Password")
-    # elif(username=="" and password=="7871"):
-    #     messagebox.showinfo("","You must enter Username")
-    # elif(username=="lucifer" and password=="7871" and var1.get()==1):
-    #     #messagebox.showinfo("","login Success As Student")
-    #     Entry1.delete(0,END)
-    #     Entry2.delete(0,END)
-    #     s.destroy()
-    #     import studentdash
-    # elif(username=="lucifer" and password=="7871" and var2.get()==1):
-    #     messagebox.showinfo("","Login Success As Teacher")
-    #     Entry1.delete(0,END)
-    #     Entry2.delete(0,END)
-    #     s.destroy()
-    #     import teacherdash
-    # elif(username=="lucifer" and password=="7871" and var1.get()==0 and var2.get()==0):
-    #     messagebox.showinfo("","One Option Must Be Selected")
-    #     Entry1.delete(0,END)
-    #     Entry2.delete(0,END)
-         
-    # else:
-    #     messagebox.showinfo("","Incorrect Username and Password")
-    #     Entry1.delete(0,END)
-    #     Entry2.delete(0,END)
 
 global entry1
 global entry2
@@ -133,10 +110,8 @@ def registration():
     s.destroy()
     import registration
 
-signup=Label(s,text="Don't have a login ID?",font=("Times New Roman",20,'normal'),bg='#966FD6').place(x=940,y=675)
-reg_button=Button(text="Register",height=0,width=5,font=('Times New Roman',18,'bold'),bg='#966FD6',fg="blue",command=registration).place(x=1130,y=670)
 
-    
+#images    
 from PIL import Image,ImageTk
 class_image=Image. open ("/Users/lucifer/Desktop/Alpha/class.png")
 resized_class = class_image.resize ((600,400))
@@ -156,12 +131,16 @@ converted_logo=ImageTk. PhotoImage(resized_logo)
 logo_label=Label(s , image=converted_logo,width=200,height=160,bg='#5c2e8a')
 logo_label.place(x=320,y=10)
 
-
 title=Label(s,text='HAJIRI',font=('Times New Roman',110,'bold','underline'),bg='#5c2e8a',fg='#FFF192')
 title.place(x=225,y=153)
 slogan=Label(s,text='Your Attendance Manager',font=('Times New Roman',20,'normal'),bg='#5c2e8a',fg='#FFF192')
 slogan.place(x=297,y=260)
 login_button=Button(text="login" ,command=login,height=1,width=8,font=('Times New Roman',30,'bold'),bg='#5c2e8a')
 login_button.place(x=1060,y=605)
+
+#Label and button for registration button
+signup=Label(s,text="Don't have a login ID?",font=("Times New Roman",20,'normal'),bg='#966FD6').place(x=940,y=675)
+reg_button=Button(text="Register",height=0,width=5,font=('Times New Roman',18,'bold'),bg='#966FD6',fg="blue",command=registration)
+reg_button.place(x=1130,y=670)
 
 s.mainloop()

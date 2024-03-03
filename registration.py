@@ -72,12 +72,10 @@ def connect_database():
         
 
 
-
 r=Tk()
 r.title('HAJIRI REGISTRATION')
 r.geometry("1400x800")
 r.config(bg='#5c2e8a')
-
 
 from PIL import Image,ImageTk
 reg_image=Image. open ("/Users/lucifer/Desktop/Alpha/reg title.jpg")
@@ -92,13 +90,11 @@ converted_img=ImageTk. PhotoImage(resized_sign)
 sign_label=Label(r ,image=converted_img,width=340,height=75,bg='#5c2e8a')
 sign_label.place(x=60,y=0)
 
-
 frame= Frame(r, highlightbackground="#AF69EE", highlightthickness=6, width=510, height=650, bd=0,bg='#966FD6')
 frame.place(x=40,y=75)
 
 fill=Label(r, text="Fill Your Details",font=("Lucida Calligraphy",26,'bold','underline'),bg='#966FD6',fg="black")
 fill.place(x=60,y=110)
-
 
 def visible():
     if chk.get()==1:
