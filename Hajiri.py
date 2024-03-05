@@ -110,4 +110,6 @@ def registration():
     s.destroy()
     import registration
 
+
+
 s.mainloop()
