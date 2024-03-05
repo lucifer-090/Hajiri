@@ -110,6 +110,36 @@ def registration():
     s.destroy()
     import registration
 
+#images
+from PIL import Image,ImageTk
+class_image=Image. open ("class.png")
+resized_class = class_image.resize ((600,400))
+converted_class=ImageTk. PhotoImage(resized_class)
+class_label=Label(s , image=converted_class,width=700,height=420,bg='#5c2e8a')
+class_label.place(x=70,y=300)
 
+profile_image=Image. open ("profile.png")
+resized_profile = profile_image.resize ((180,160))
+converted_profile=ImageTk. PhotoImage(resized_profile)
+profile_label=Label(s , image=converted_profile,bg='#966FD6')
+profile_label.place(x=1040,y=260)
+
+logo_image=Image. open ("logo2.png")
+resized_logo = logo_image.resize ((200,130))
+converted_logo=ImageTk. PhotoImage(resized_logo)
+logo_label=Label(s , image=converted_logo,width=200,height=160,bg='#5c2e8a')
+logo_label.place(x=320,y=10)
+
+title=Label(s,text='HAJIRI',font=('Times New Roman',110,'bold','underline'),bg='#5c2e8a',fg='#FFF192')
+title.place(x=225,y=153)
+slogan=Label(s,text='Your Attendance Manager',font=('Times New Roman',20,'normal'),bg='#5c2e8a',fg='#FFF192')
+slogan.place(x=297,y=260)
+login_button=Button(text="login" ,command=login,height=1,width=8,font=('Times New Roman',30,'bold'),bg='#5c2e8a')
+login_button.place(x=1060,y=605)
+
+#Label and button for registration button
+signup=Label(s,text="Don't have a login ID?",font=("Times New Roman",20,'normal'),bg='#966FD6').place(x=940,y=675)
+reg_button=Button(text="Register",height=0,width=5,font=('Times New Roman',18,'bold'),bg='#966FD6',fg="blue",command=registration)
+reg_button.place(x=1130,y=670)
 
 s.mainloop()
